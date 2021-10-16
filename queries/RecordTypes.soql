@@ -1,0 +1,4 @@
+SELECT Name, DeveloperName, Description, SobjectType, IsActive
+FROM RecordType
+WHERE NamespacePrefix = NULL
+ORDER BY SobjectType, DeveloperName 

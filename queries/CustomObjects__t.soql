@@ -1,0 +1,4 @@
+SELECT DeveloperName, Language, Description, SharingModel
+FROM CustomObject
+WHERE NamespacePrefix = NULL 
+ORDER BY DeveloperName
