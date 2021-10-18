@@ -52,7 +52,7 @@ function queryData() {
         for org in "$@"
         do
             mkdir -p "./orgs/$org/data"
-            sfdx force:data:soql:query -u "$org" -q "$SOQL" -r csv $([[ $fileName =~ .*__t.soql$ ]] && echo "--usetoolingapi") > "./orgs/$org/data/$fileName.csv" &
+            sfdx force:data:soql:query -u "$org" -q "$SOQL" -r human $([[ $fileName =~ .*__t.soql$ ]] && echo "--usetoolingapi") > "./orgs/$org/data/$fileName.csv" &
         done
         
         let "i += 1"
