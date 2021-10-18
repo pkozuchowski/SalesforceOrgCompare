@@ -67,35 +67,28 @@ function createComparisonRepository() {
 }
 
 function initRepository() {
-    if [ -d "./orgs/gitcompare" ]
-    then
-        (
-            cd ./orgs/gitcompare || exit
-            git reset --hard ROOT
-        )
-    else 
-        mkdir ./orgs/gitcompare
+    rm -rf ./orgs/gitcompare
+    mkdir ./orgs/gitcompare
 
-        (
-            cd ./orgs/gitcompare || exit
-            git init
-            git commit --allow-empty -m 'init'
-            git tag -a -m '' ROOT
-        )
-    fi
+    (
+        cd ./orgs/gitcompare || exit
+        git init
+        git commit --allow-empty -m 'init'
+        git tag -a -m '' ROOT
+    )
 }
 
 function commitSandboxes() {
-  for org in "$@"
-  do
-    rm -r ./orgs/gitcompare/*
-    cp -a "./orgs/$org/." "./orgs/gitcompare/"
-    
-    (
-        cd ./orgs/gitcompare || exit
-        git add --all
-        git commit --quiet -m "$org"
-    )
-  done
+    for org in "$@"
+    do
+        rm -rf ./orgs/gitcompare/*
+        cp -rf "./orgs/$org/." "./orgs/gitcompare/"
+
+        (
+            cd ./orgs/gitcompare || exit
+            git add --all
+            git commit --quiet -m "$org"
+        )
+    done
 }
 
