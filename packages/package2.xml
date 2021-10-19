@@ -14,6 +14,22 @@
     </types>
     <types>
         <members>*</members>
+        <name>CorsWhitelistOrigin</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CspTrustedSite</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomNotificationType</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>NamedCredential</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>CustomLabel</name>
     </types>
     <types>
@@ -26,15 +42,11 @@
     </types>
     <types>
         <members>*</members>
-        <name>WorkflowAlert</name>
+        <name>Settings</name>
     </types>
     <types>
         <members>*</members>
-        <name>WorkflowFieldUpdate</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>WorkflowRule</name>
+        <name>Workflow</name>
     </types>
     <version>52.0</version>
 </Package>

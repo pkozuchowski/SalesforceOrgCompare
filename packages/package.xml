@@ -38,6 +38,10 @@
     </types>
     <types>
         <members>*</members>
+        <name>FlowDefinition</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>HomePageLayout</name>
     </types>
     <types>
