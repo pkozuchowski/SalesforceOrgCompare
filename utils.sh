@@ -12,21 +12,28 @@ function prepareFolders() {
 }
 
 function retrieveMetadata() {
-  i=1
-
-  for f in ./packages/*.xml; do
-      for org in "$@"
-      do
-        sfdx force:mdapi:retrieve -u "$org" -k "$f" --singlepackage --retrievetargetdir "./retrieve/$org/$i" & 
-      done
-      
-      let "i += 1"
-  done
-  wait
-  
-  unzipPackages "$@"
+    retrieveMetadataOrRetry "$@"
+    
+    #Retry failed retrieves
+    retrieveMetadataOrRetry "$@"
+    
+    unzipPackages "$@"
 }
 
+function retrieveMetadataOrRetry() {
+    i=1
+    for f in ./packages/*.xml; do
+        for org in "$@"
+        do
+            if [ ! -d "./retrieve/$org/$i" ]; then
+                sfdx force:mdapi:retrieve -u "$org" -k "$f" --singlepackage --retrievetargetdir "./retrieve/$org/$i" & 
+            fi
+        done
+
+        let "i += 1"
+    done
+    wait
+}
 
 function unzipPackages() {
       i=1
