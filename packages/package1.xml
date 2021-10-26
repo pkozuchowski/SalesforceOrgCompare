@@ -70,6 +70,10 @@
     </types>
     <types>
         <members>*</members>
+        <name>SharingGuestRule</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>SharingSet</name>
     </types>
     <types>
